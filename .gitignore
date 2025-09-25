@@ -2,3 +2,5 @@
 connect4
 *.out
 *.log
+.vscode/
+

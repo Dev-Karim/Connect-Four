@@ -22,13 +22,13 @@ int placeInput(char board[ROWS][COLS], int col, char player);
  we return 'A' if player A wins and return 'B' if player B wins and if none won
  we return ' '
 */
-char checkWin(char board[ROWS][COLS]);
+char checkWin(const char board[ROWS][COLS]);
 
 /* 
 here we want to check if the board is full 
 because if its full that indicates that its a draw
 we return 1 if its full and 0 if not
 */
-int isBoardFull(char board[ROWS][COLS]);
+int isBoardFull(const char board[ROWS][COLS]);
 
 #endif
