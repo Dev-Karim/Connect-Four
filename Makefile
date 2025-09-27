@@ -1,43 +1,42 @@
 # ===== Connect-4 Makefile =====
 CC      := gcc
+STD     := -std=c11
 WARN    := -Wall -Wextra -Wpedantic
 OPT     := -O2
 DBG     := -g
-CFLAGS  := $(WARN) $(OPT) $(DBG)
+CFLAGS  := $(STD) $(WARN) $(OPT) $(DBG)
 LDFLAGS :=
 
 SRC     := main.c board.c game.c
 OBJ     := $(SRC:.c=.o)
+DEP     := $(OBJ:.o=.d)
 BIN     := connect4
 
 .PHONY: all run debug release valgrind clean
 
-# Default build
 all: $(BIN)
 
 $(BIN): $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) -o $@ $(LDFLAGS)
 
-# Generic compile rule
+# Pattern rule with dep generation (-MMD -MP)
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -MMD -MP -c $< -o $@
 
-# Run the game
 run: $(BIN)
 	./$(BIN)
 
-# Debug build (no optimization)
-debug: CFLAGS = $(WARN) -O0 -g
+debug: CFLAGS := $(STD) $(WARN) -O0 -g
 debug: clean all
 
-# Release build (optimized)
-release: CFLAGS = $(WARN) -O2
+release: CFLAGS := $(STD) $(WARN) -O2
 release: clean all
 
-# Memory check (valgrind)
 valgrind: $(BIN)
 	valgrind --leak-check=full ./$(BIN)
 
-# Cleanup
 clean:
-	rm -f $(OBJ) $(BIN)
+	rm -f $(OBJ) $(DEP) $(BIN)
+
+# Include auto-generated header deps if present
+-include $(DEP)
