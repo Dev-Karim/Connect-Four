@@ -1,6 +1,7 @@
+/connect4
+/connect4.exe
 *.o
-connect4
 *.out
 *.log
+.DS_Store
 .vscode/
-
