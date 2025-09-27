@@ -30,11 +30,11 @@ $(BIN): $(OBJ)
 run: $(BIN)
 	./$(BIN)
 
-# Debug build (no optimizations, full symbols)
+# Debug build (1)
 debug: CFLAGS := $(WARN) -O0 -g
 debug: clean all
 
-# Release build (optimized)
+# Release build (2)
 release: CFLAGS := $(WARN) -O2
 release: clean all
 
