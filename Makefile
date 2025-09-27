@@ -1,16 +1,47 @@
-CC = gcc
-CFLAGS = -Wall -g
-run: main.o board.o game.o
-	$(CC) $(CFLAGS) -o run main.o board.o game.o
+# ===== Connect-4 Makefile (Sprint 1) =====
+CC      := gcc
+WARN    := -Wall -Wextra -Wpedantic
+OPT     := -O2
+DBG     := -g
+CFLAGS  := $(WARN) $(OPT) $(DBG)
+LDFLAGS :=
 
-main.o: main.c board.h game.h
-	$(CC) $(CFLAGS) -c main.c
+# If your .c files live in the repo root:
+SRC := main.c board.c game.c
+# If they live under src/, use this instead:
+# SRC := src/main.c src/board.c src/game.c
 
-board.o: board.c board.h
-	$(CC) $(CFLAGS) -c board.c
+OBJ := $(SRC:.c=.o)
+BIN := connect4
 
-game.o: game.c game.h
-	$(CC) $(CFLAGS) -c game.c
+.PHONY: all run debug release valgrind clean
 
+# Default build
+all: $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(CFLAGS) $(OBJ) -o $@ $(LDFLAGS)
+
+# Generic compile rule
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+# Run the game
+run: $(BIN)
+	./$(BIN)
+
+# Debug build (no optimizations, full symbols)
+debug: CFLAGS := $(WARN) -O0 -g
+debug: clean all
+
+# Release build (optimized)
+release: CFLAGS := $(WARN) -O2
+release: clean all
+
+# Valgrind memory check (required by spec)
+valgrind: $(BIN)
+	valgrind --leak-check=full ./$(BIN)
+
+# Cleanup
 clean:
-	rm -rf *.o run
+	rm -f $(OBJ) $(BIN)
