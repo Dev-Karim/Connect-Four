@@ -1,4 +1,4 @@
-# ===== Connect-4 Makefile (Sprint 1) =====
+# ===== Connect-4 Makefile =====
 CC      := gcc
 WARN    := -Wall -Wextra -Wpedantic
 OPT     := -O2
@@ -6,13 +6,9 @@ DBG     := -g
 CFLAGS  := $(WARN) $(OPT) $(DBG)
 LDFLAGS :=
 
-# If your .c files live in the repo root:
-SRC := main.c board.c game.c
-# If they live under src/, use this instead:
-# SRC := src/main.c src/board.c src/game.c
-
-OBJ := $(SRC:.c=.o)
-BIN := connect4
+SRC     := main.c board.c game.c
+OBJ     := $(SRC:.c=.o)
+BIN     := connect4
 
 .PHONY: all run debug release valgrind clean
 
@@ -30,15 +26,15 @@ $(BIN): $(OBJ)
 run: $(BIN)
 	./$(BIN)
 
-# Debug build (1)
-debug: CFLAGS := $(WARN) -O0 -g
+# Debug build (no optimization)
+debug: CFLAGS = $(WARN) -O0 -g
 debug: clean all
 
-# Release build (2)
-release: CFLAGS := $(WARN) -O2
+# Release build (optimized)
+release: CFLAGS = $(WARN) -O2
 release: clean all
 
-# Valgrind memory check (required by spec)
+# Memory check (valgrind)
 valgrind: $(BIN)
 	valgrind --leak-check=full ./$(BIN)
 
