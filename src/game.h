@@ -1,22 +1,9 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include "board.h"
+// Sprint 1: Two-player Connect Four (console).
+// Exposes the main game loop (human vs. human).
 
-// function to start the game loop
-void playGame();
+void play_human_vs_human(void);
 
-// this function is used to give turns for player 'A' or 'B'
-char switchPlayer(char currentPlayer);
-
-/*
- get a valid input from the player 
- which will prompt the player to enter a column (1-7)
- then check the input (column is in range and the board is not full) 
- returns index of the columns but need to return the index-1 since an array starts from index 0
-*/
-int getPlayerMove(char currentPlayer, char board[ROWS][COLS]);
-
-#endif
-
-
+#endif // GAME_H
