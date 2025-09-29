@@ -1,53 +1,23 @@
-Connect-4 — CMPS 241 Systems Programming Project
+🎮 Connect-4 — CMPS 241 Systems Programming Project
 
 📖 Overview
 
-Implementation of the classic Connect-4 game in C as part of CMPS 241 (Systems Programming).
-The project is delivered in four sprints, starting with a two-player console game and ending with progressively stronger bots, plus a final report and presentation.
+This repository contains our implementation of the classic Connect-4 game, developed as part of CMPS 241 (Systems Programming) at AUB.
+The project is written in C and designed to run in the terminal using a clean, console-based interface.
+
+Connect-4 is a two-player strategy game played on a 6×7 grid. Players alternate turns dropping their discs into columns, and the first to connect four discs in a row (horizontally, vertically, or diagonally) wins the game. If the grid fills completely without a winner, the game ends in a draw.
 
 ⸻
 
-🚀 Features (Sprint 1)
-	•	Console-based 6×7 board.
-	•	Two human players (A and B) take turns.
-	•	Board updates and re-renders after each move.
-	•	Invalid moves (full column, out of range, bad input) are rejected with a clear message.
-	•	Detects wins horizontally, vertically, and diagonally.
-	•	Declares winner or draw.
-	•	Sample playthrough screenshots provided in docs/.
+📊 Project Goals
+	•	Practice C programming in a structured, modular way.
+	•	Apply systems programming concepts: memory safety, debugging, and clean builds.
+	•	Maintain a professional GitHub repository with commits, documentation, and organized structure.
+	•	Provide a foundation for future extensions such as AI opponents, complexity analysis, and performance improvements.
 
 ⸻
 
-🛠️ Compilation & Run Instructions
+👥 Authors
 
-Build
-
-make clean
-make
-
-Run
-
-make run
-
-Clean
-
-make clean
-
-Optional targets
-	•	make debug → build with -O0 -g for debugging
-	•	make release → optimized build with -O2
-
-⸻
-
-📅 Sprint Deliverables
-	•	Sprint 1 (Oct 4): Two-player console game ✅
-	•	Sprint 2 (Oct 18): Easy bot (random valid moves)
-	•	Sprint 3 (Nov 1): Medium bot + complexity analysis
-	•	Sprint 4 (Nov 15): Hard bot + complexity analysis + final report + slides + demo
-⸻
-⸻
-
-👥 Team & Integrity
-
-Developed by KJE Core for CMPS 241 (Fall 2025/26).
-All work follows AUB’s academic integrity policy — this repo is the result of our team’s understanding and development process.
+Developed collaboratively by our team for CMPS 241 — Systems Programming.
+This work represents our learning and understanding of C, system tools, and structured project development.
