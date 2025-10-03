@@ -14,7 +14,7 @@ Board for visualization (6 rows,7 cols):
 */
 void createBoard(char board[ROWS][COLS])
 {
-    for(int i = 0; i <= ROWS; i++) 
+    for(int i = 0; i < ROWS; i++) 
     {
         for(int j = 0; j < COLS; j++)
         {
@@ -106,14 +106,14 @@ char checkWin(const char board[ROWS][COLS])
                  return board[i][j];
         }
     }
-
+    return '\0';
 }
 
 int isBoardFull(const char board[ROWS][COLS])
 {
     for(int i = 0; i < COLS; i++)
     {
-        if(board[0][i] == "+")
+        if(board[0][i] == EMPTY_CELL)
             return 0;
     }
     return 1;

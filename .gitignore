@@ -1,6 +1,7 @@
 /connect4
 /connect4.exe
 *.o
+*.d
 *.out
 *.log
 .DS_Store
