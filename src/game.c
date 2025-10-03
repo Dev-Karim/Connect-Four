@@ -21,7 +21,7 @@ void play_human_vs_human(void) {
         int col_input;
 
         // prompt
-        printf("Player %c, choose a column (1-7): ", current);
+        printf("\nPlayer %c, choose a column (1-7): ", current);
         fflush(stdout);
 
         // read line
