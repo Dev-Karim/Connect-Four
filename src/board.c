@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "board.h"
 
-#define char EMPTY_CELL '+'
+#define EMPTY_CELL '+'
 /*
 Board for visualization (6 rows,7 cols):
 0 + + + + + + +

@@ -7,7 +7,7 @@ DBG     := -g
 CFLAGS  := $(STD) $(WARN) $(OPT) $(DBG)
 LDFLAGS :=
 
-SRC     := main.c board.c game.c
+SRC     := src/main.c src/board.c src/game.c
 OBJ     := $(SRC:.c=.o)
 DEP     := $(OBJ:.o=.d)
 BIN     := connect4
