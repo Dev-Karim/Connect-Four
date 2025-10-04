@@ -8,7 +8,7 @@
 void createBoard(char board[ROWS][COLS]);
 
 // used to display the board on the terminal 
-void displayBoard(char board[ROWS][COLS]);
+void displayBoard(const char board[ROWS][COLS]);
 
 /*
  function used to place the input from the player 'A' or 'B' and the collumn specified from the player

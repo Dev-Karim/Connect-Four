@@ -23,7 +23,7 @@ void createBoard(char board[ROWS][COLS])
     }
 }
 
-void displayBoard(char board[ROWS][COLS])
+void displayBoard(const char board[ROWS][COLS])
 {
     for(int i = 0; i < ROWS; i++)
     {

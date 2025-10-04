@@ -27,20 +27,20 @@ void play_human_vs_human(void) {
         // read line
         if (!fgets(line, sizeof(line), stdin)) {
             clearerr(stdin);
-            puts("Invalid move, try again.");
+            puts("\nInvalid move, try again.");
             continue;
         }
 
         col_input = atoi(line);
         if (col_input < 1 || col_input > COLS) {
-            puts("Invalid move, try again.");
+            puts("\nInvalid move, try again.");
             continue;
         }
 
         // place (convert to 0-based column)
         if (!placeInput(board, col_input - 1, current)) {
             // invalid column index or column is full
-            puts("Invalid move, try again.");
+            puts("\nInvalid move, try again.");
             continue;
         }
 
@@ -50,14 +50,14 @@ void play_human_vs_human(void) {
         {
             char winner = checkWin(board);
             if (winner == 'A' || winner == 'B') {
-                printf("Player %c wins!\n", winner);
+                printf("\nPlayer %c wins!\n", winner);
                 break;
             }
         }
 
         // draw?
         if (isBoardFull(board)) {
-            puts("It's a draw!");
+            puts("\nIt's a draw!");
             break;
         }
 
