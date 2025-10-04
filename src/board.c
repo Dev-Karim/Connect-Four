@@ -70,19 +70,19 @@ char checkWin(const char board[ROWS][COLS])
     }
 
     // here we are checking vertically
-    for(int i = 0; i < COLS; i++)
+    for(int i = 0; i < ROWS; i++)
     {
-        for(int j = 0; j <= ROWS-4; j++)
+        for(int j = 0; j <= COLS-1; j++)
         {
-            if(board[i][j] != EMPTY_CELL &&
-                 board[i][j] ==  board[i+1][j] &&
-                 board[i][j] ==  board[i+2][j] &&
-                 board[i][j] == board[i+3][j])
-                 return board[i][j];
+            if(i <= ROWS-4 &&
+               board[i][j] != EMPTY_CELL &&
+               board[i][j] == board[i+1][j] &&
+               board[i][j] == board[i+2][j] &&
+               board[i][j] == board[i+3][j])
+                return board[i][j];
         }
     }
-    // here we are checking diagonnalLy from top left to bottom right
-    // it is better if u draw on a paper the matrix to understand whats happening
+    // here we are checking diagonally from top left to bottom right
     for(int i = 0; i <= ROWS-4; i++)
     {
         for(int j = 0; j <= COLS-4; j++)
