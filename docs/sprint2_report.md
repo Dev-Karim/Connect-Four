@@ -20,6 +20,7 @@ You can install them with:
 apk update
 apk add make gcc g++
 ```
+
 ### 2. Navigate to the Project Directory.
 
 Change into the shared project directory:
