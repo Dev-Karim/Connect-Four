@@ -31,7 +31,7 @@ void play_human_vs_human(void) {
     puts("Welcome to Connect Four!");
     puts("Player A: A");
     puts("Player B: B");
-    displayBoard(board);
+    displayBoard((const char (*) [COLS]) board);
 
     while (1) {
         int col = read_column_input(current);
@@ -40,17 +40,17 @@ void play_human_vs_human(void) {
             continue;
         }
 
-        displayBoard(board);
+        displayBoard((const char (*) [COLS]) board);
 
         {
-            char winner = checkWin(board);
+            char winner = checkWin((const char (*) [COLS]) board);
             if (winner == 'A' || winner == 'B') {
                 printf("Player %c wins!\n", winner);
                 break;
             }
         }
 
-        if (isBoardFull(board)) {
+        if (isBoardFull((const char (*) [COLS]) board)) {
             puts("It's a draw!");
             break;
         }
@@ -77,10 +77,10 @@ static void copy_board(char dst[ROWS][COLS], const char src[ROWS][COLS]) {
 static char simulate_winner_if_drop(const char b[ROWS][COLS], int c, char token) {
     char tmp[ROWS][COLS];
     copy_board(tmp, b);
-    int row = find_row_for_col(tmp, c);
+    int row = find_row_for_col((const char (*)[COLS]) tmp, c);
     if (row < 0) return '\0';
     tmp[row][c] = token;
-    return checkWin(tmp);
+    return checkWin((const char (*)[COLS]) tmp);
 }
 static int bot_choose_random_col(const char b[ROWS][COLS]) {
     int valid[COLS], n = 0;
@@ -124,7 +124,7 @@ void play_human_vs_bot(int difficulty) {
     puts("Welcome to Connect Four!");
     puts("Player A (Human): A");
     puts("Player B (Bot):   B");
-    displayBoard(board);
+    displayBoard((const char (*)[COLS]) board);
 
     while (1) {
         int col = -1;
@@ -139,9 +139,9 @@ void play_human_vs_bot(int difficulty) {
         } else {
             // bot move
             if (difficulty == 2) {
-                col = bot_choose_medium_col(board, bot, human);
+                col = bot_choose_medium_col((const char (*)[COLS]) board, bot, human);
             } else {
-                col = bot_choose_random_col(board);
+                col = bot_choose_random_col((const char (*)[COLS]) board);
             }
             if (col < 0 || !placeInput(board, col, bot)) {
                 // should not happen
@@ -151,11 +151,11 @@ void play_human_vs_bot(int difficulty) {
             }
             printf("\nBot (B) plays column %d\n", col + 1);
         }
-        displayBoard(board);
+        displayBoard((const char (*)[COLS]) board);
 
         // winner
         {
-            char winner = checkWin(board);
+            char winner = checkWin((const char (*)[COLS]) board);
             if (winner == 'A' || winner == 'B') {
                 printf("Player %c wins!\n", winner);
                 break;
@@ -163,7 +163,7 @@ void play_human_vs_bot(int difficulty) {
         }
 
         // draw
-        if (isBoardFull(board)) {
+        if (isBoardFull((const char (*)[COLS]) board)) {
             puts("It's a draw!");
             break;
         }
