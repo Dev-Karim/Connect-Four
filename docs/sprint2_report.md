@@ -19,41 +19,54 @@ You can install them with:
 ```sh
 apk update
 apk add make gcc g++
+```
+### 2. Navigate to the Project Directory.
 
-### 2. Navigate to the Project Directory
+Change into the shared project directory:
 
-- 'cd /mnt/shared/Connect_Four'
+```sh
+cd /mnt/shared/Connect_Four
+```
 
 ### 3. Compile the Program
 
-- 'make'
+Build the project using the Makefile:
+
+```sh
+make
+```
 
 ### 4. Run the Program
 
-- './connect4'
+Start the game executable:
 
-### You should see the Connect Four welcome message and menu for playing:
+```sh
+./connect4
+```
 
+### Expected Output
+
+You should see the Connect Four welcome message and main menu, for example:
+
+```txt
 Welcome to Connect Four!
 Player A: A
 Player B: B
+```
 
-5. Playing the Game
+### 5. Playing the Game
 
-Human vs Human: Follow the prompts to input column numbers (1–7) for each player.
+- Human vs Human: follow the prompts and enter column numbers (1–7) for each player.
+- Human vs Bot: select a difficulty (Easy / Medium). The bot will then make moves automatically.
+- Invalid moves (e.g., full column, out-of-range input) will prompt you to try again.
+- The game continues until a player connects four or the board is full (draw).
 
-Human vs Bot: Choose the difficulty level (Easy/Medium). The bot will make moves automatically.
+### 6. Cleaning Up (Optional)
 
-Invalid moves will prompt you to try again.
+Remove compiled files and the executable to start fresh:
 
-The game continues until a player wins or the board is full (draw).
-
-6. Cleaning Up (Optional)
-
-To remove compiled files and start fresh:
-
+```sh
 make clean
+```
 
-
-This deletes object files and the executable, allowing you to recompile from scratch.
-
+This removes object files and the executable so you can recompile from scratch.
