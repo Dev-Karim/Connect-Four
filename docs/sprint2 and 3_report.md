@@ -1,4 +1,4 @@
-# Sprint 2 – Connect Four: Human vs Bot
+# Sprint 2 and 3 – Connect Four: Human vs Bot
 
 ## Running the Program in Alpine Linux
 
