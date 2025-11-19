@@ -4,8 +4,8 @@ STD     := -std=c11
 WARN    := -Wall -Wextra -Wpedantic
 OPT     := -O2
 DBG     := -g
-CFLAGS  := $(STD) $(WARN) $(OPT) $(DBG)
-LDFLAGS :=
+CFLAGS  := $(STD) $(WARN) $(OPT) $(DBG) -pthread
+LDFLAGS := -pthread
 
 SRC     := src/main.c src/board.c src/game.c
 OBJ     := $(SRC:.c=.o)
@@ -26,10 +26,12 @@ $(BIN): $(OBJ)
 run: $(BIN)
 	./$(BIN)
 
-debug: CFLAGS := $(STD) $(WARN) -O0 -g
+debug: CFLAGS := $(STD) $(WARN) -O0 -g -pthread
+debug: LDFLAGS := -pthread
 debug: clean all
 
-release: CFLAGS := $(STD) $(WARN) -O2
+release: CFLAGS := $(STD) $(WARN) -O2 -pthread
+release: LDFLAGS := -pthread
 release: clean all
 
 valgrind: $(BIN)
