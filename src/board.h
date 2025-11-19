@@ -17,7 +17,7 @@ void displayBoard(const char board[ROWS][COLS]);
 int placeInput(char board[ROWS][COLS], int col, char player);
 
 /*
- pretty self explanatory we want to check if a player has won
+ we want to check if a player has won
  if a player placed 4 in a row either horizontally, vertically, diagonally
  we return 'A' if player A wins and return 'B' if player B wins and if none won
  we return ' '
